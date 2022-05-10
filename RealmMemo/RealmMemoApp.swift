@@ -11,7 +11,7 @@ import SwiftUI
 struct RealmMemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MemoListView()
         }
     }
 }

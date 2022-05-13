@@ -9,7 +9,6 @@ import SwiftUI
 import RealmSwift
 
 final class MainViewModel: ObservableObject {
-    private var realm: Realm!
     @Published var title = ""
     @Published var detail = ""
     @Published var openNewPage = false
@@ -17,11 +16,11 @@ final class MainViewModel: ObservableObject {
     @Published var updateObject: Memo?
     
     init() {
-        realm = try! Realm()
         fetchData()
     }
     
     private func fetchData() {
+        guard let realm = try? Realm() else { return }
         let results = realm.objects(Memo.self)
         
         updateObject = nil
@@ -32,6 +31,7 @@ final class MainViewModel: ObservableObject {
     }
     
     func addData(present: Binding<PresentationMode>) {
+        guard let realm = try? Realm() else { return }
         let memo = Memo()
         memo.title = title
         memo.detail = detail
@@ -52,6 +52,8 @@ final class MainViewModel: ObservableObject {
     }
     
     func deleteData(object: Memo) {
+        guard let realm = try? Realm() else { return }
+        
         try! realm.write {
             realm.delete(object)
             

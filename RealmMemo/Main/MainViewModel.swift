@@ -63,9 +63,10 @@ final class MainViewModel: ObservableObject {
     
     func loadSelectedData() {
         guard let updateObject = updateObject else { return }
-        
-        title = updateObject.title
-        detail = updateObject.detail
+        DispatchQueue.main.async {
+            self.title = updateObject.title
+            self.detail = updateObject.detail
+        }
     }
     
     func deinitData() {

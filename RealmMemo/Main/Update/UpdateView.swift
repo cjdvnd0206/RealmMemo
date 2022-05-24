@@ -24,8 +24,10 @@ struct UpdateView: View {
             }
             .listStyle(.grouped)
             .navigationBarTitle(viewModel.updateObject == nil ? "메모추가" : "메모수정", displayMode: .inline)
-            .navigationBarItems(leading: Button("취소", action: { presentation.wrappedValue.dismiss() }),
-                                trailing: Button("확인", action: { viewModel.addData(present: presentation) }))
+            .navigationBarItems(leading: Button("취소", action: {
+                presentation.wrappedValue.dismiss()
+                viewModel.updateObject = nil
+            }), trailing: Button("확인", action: { viewModel.addData(present: presentation) }))
         }
         .navigationViewStyle(.stack)
         .onAppear(perform: viewModel.loadSelectedData)

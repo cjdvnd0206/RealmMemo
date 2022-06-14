@@ -12,4 +12,5 @@ class Memo: Object, Identifiable {
     @objc dynamic var id: Date = Date()
     @objc dynamic var title = ""
     @objc dynamic var detail = ""
+    // master test
 }

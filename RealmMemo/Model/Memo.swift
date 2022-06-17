@@ -13,4 +13,5 @@ class Memo: Object, Identifiable {
     @objc dynamic var title = ""
     @objc dynamic var detail = ""
     // Git PR Test
+    // Git PR Test 2
 }
